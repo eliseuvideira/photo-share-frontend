@@ -13,17 +13,15 @@ export const Routes = () => (
       <Route path="/sign-out" component={SignOutPage} />
       <Route
         path="/"
-        component={(props) =>
-          console.log(props) || (
-            <Redirect
-              to={{
-                ...props.location,
-                pathname: "/sign-in",
-              }}
-              {...props}
-            />
-          )
-        }
+        component={(props) => (
+          <Redirect
+            to={{
+              ...props.location,
+              pathname: "/sign-in",
+            }}
+            {...props}
+          />
+        )}
       />
       <Route component={NotFoundPage} />
     </Switch>
