@@ -1,5 +1,3 @@
-const App = () => {
-  return <p>Hello World!</p>;
-};
+import { Routes } from "./Routes";
 
-export default App;
+export const App = () => <Routes />;
