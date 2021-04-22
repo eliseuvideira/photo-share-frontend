@@ -1,6 +1,7 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Page } from "../components/Page";
+import { PhotoList } from "../components/PhotoList";
 
 const CREATE_PHOTO = gql`
   mutation($name: String!, $category: PhotoCategory!) {
@@ -13,6 +14,7 @@ const CREATE_PHOTO = gql`
 const ALL_PHOTOS = gql`
   query {
     allPhotos {
+      photoId
       name
       category
       url
@@ -36,11 +38,7 @@ export const PhotosPage = () => {
     <Page>
       <p>Photo Page</p>
       <section>
-        {loading ? (
-          <p>Loading</p>
-        ) : (
-          data.allPhotos.map((x) => <p>{JSON.stringify(x)}</p>)
-        )}
+        {loading ? <p>Loading</p> : <PhotoList photos={data.allPhotos} />}
       </section>
       <section>
         <input
